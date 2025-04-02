@@ -1,15 +1,13 @@
 {% extends "base.html" %}
-
 {% block content %}
+<!-- Tabla completa de películas -->
 <div class="container mt-4">
     <h2 class="mb-4">Listado de Películas</h2>
-    
     <div class="d-flex justify-content-between mb-3">
         <a href="{{ url_for('agregar_pelicula') }}" class="btn btn-primary">
             <i class="bi bi-plus-circle"></i> Agregar Película
         </a>
     </div>
-    
     <div class="card shadow">
         <div class="card-body">
             <table class="table table-striped table-hover">
@@ -30,11 +28,12 @@
                         <td>{{ pelicula.protagonista }}</td>
                         <td>{{ pelicula.genero.nombre }}</td>
                         <td>
+                            <!-- Botones de acciones -->
                             <a href="{{ url_for('editar_pelicula', id=pelicula.id) }}" class="btn btn-sm btn-warning">
                                 <i class="bi bi-pencil"></i> Editar
                             </a>
                             <a href="{{ url_for('eliminar_pelicula', id=pelicula.id) }}" class="btn btn-sm btn-danger" 
-                               onclick="return confirm('¿Está seguro de eliminar esta película?')">
+                               onclick="return confirm('¿Está seguro?')">
                                 <i class="bi bi-trash"></i> Eliminar
                             </a>
                         </td>

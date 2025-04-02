@@ -1,23 +1,30 @@
-{% extends "base.html" %}
+{% extends "base.html" %}  <!-- Hereda de la plantilla base del sistema -->
 
-{% block content %}
-<div class="container mt-4">
-    <h2 class="mb-4">Agregar Nueva Película</h2>
+{% block content %} 
+<div class="container mt-4"> 
+    <h2 class="mb-4">Agregar Nueva Película</h2>  
     
+    <!-- Tarjeta para contener el formulario -->
     <div class="card shadow">
-        <div class="card-body">
+        <div class="card-body"> 
+            
             <form method="POST" action="{{ url_for('agregar_pelicula') }}" enctype="multipart/form-data">
+                
                 <div class="row">
+                   
                     <div class="col-md-6">
+                        
                         <div class="mb-3">
                             <label for="codigo" class="form-label">Código</label>
                             <input type="number" class="form-control" id="codigo" name="codigo" required>
                         </div>
                         
+        
                         <div class="mb-3">
                             <label for="titulo" class="form-label">Título</label>
                             <input type="text" class="form-control" id="titulo" name="titulo" required>
                         </div>
+                        
                         
                         <div class="mb-3">
                             <label for="protagonista" class="form-label">Protagonista</label>
@@ -25,22 +32,27 @@
                         </div>
                     </div>
                     
+                  
                     <div class="col-md-6">
+                       
                         <div class="mb-3">
                             <label for="duracion" class="form-label">Duración (minutos)</label>
                             <input type="number" class="form-control" id="duracion" name="duracion" min="30" max="200" required>
                         </div>
                         
+                        <!-- Selector de género con opciones dinámicas -->
                         <div class="mb-3">
                             <label for="genero_id" class="form-label">Género</label>
                             <select class="form-select" id="genero_id" name="genero_id" required>
                                 <option value="">Seleccione un género</option>
+                               
                                 {% for genero in generos %}
                                 <option value="{{ genero.id }}">{{ genero.nombre }}</option>
                                 {% endfor %}
                             </select>
                         </div>
                         
+                        <!-- Selector de archivo para imagen -->
                         <div class="mb-3">
                             <label for="foto" class="form-label">Imagen (opcional)</label>
                             <input type="file" class="form-control" id="foto" name="foto" accept="image/*">
@@ -48,17 +60,21 @@
                     </div>
                 </div>
                 
+                
                 <div class="mb-3">
                     <label for="resumen" class="form-label">Resumen</label>
                     <textarea class="form-control" id="resumen" name="resumen" rows="3" required></textarea>
                 </div>
                 
+                <!-- Botones de acción -->
                 <div class="d-flex justify-content-end">
+                    
                     <a href="{{ url_for('listar_peliculas') }}" class="btn btn-secondary me-2">Cancelar</a>
+                    
                     <button type="submit" class="btn btn-primary">Guardar</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
-{% endblock %}
+{% endblock %} 

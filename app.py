@@ -8,16 +8,18 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'tu_clave_secreta_aqui'
 app.config['UPLOAD_FOLDER'] = './static/imagenes'
 
-# Configuración de MongoDB
+
+# Configuración de MongoDB Atlas
+uri = "mongodb+srv://santiagomera051:yLnD2VPt29dXM6YT@cluster0.fdx1n.mongodb.net/GestionPeliculas?retryWrites=true&w=majority"
+
 app.config['MONGODB_SETTINGS'] = {
-    'db': 'GestionPeliculas',
-    'host': 'localhost',
-    'port': 27017
+    'host': uri,
+    'connect': False 
 }
 
 # Conexión directa con PyMongo para la colección de usuarios
-client = MongoClient('localhost', 27017)
-baseDatos = client['GestionPeliculas']
+client = MongoClient(uri)
+baseDatos = client.get_database('GestionPeliculas')
 usuarios = baseDatos['Nuevos_usuarios']
 
 # Inicializar MongoEngine
@@ -35,7 +37,7 @@ if __name__ == '__main__':
             'username': 'admin',
             'password': 'admin123',
             'nombre': 'Administrador',
-            'email': 'admin@example.com'
+            'email': 'admin@gmail.com'
         })
     
     app.run(port=3000, host='0.0.0.0', debug=True)

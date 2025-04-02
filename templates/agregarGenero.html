@@ -1,23 +1,29 @@
-{% extends "base.html" %}
+{% extends "base.html" %}  <!-- Hereda de la plantilla base -->
 
-{% block content %}
-<div class="container mt-4">
-    <h2 class="mb-4">Agregar Nuevo Género</h2>
+{% block content %}  
+<div class="container mt-4">  
+    <h2 class="mb-4">Agregar Nuevo Género</h2>  <!-- Título de la página -->
     
+    <!-- Tarjeta  para el formulario -->
     <div class="card shadow">
-        <div class="card-body">
+        <div class="card-body">  
+            <!-- Formulario que envía datos por POST a la ruta agregar_genero -->
             <form method="POST" action="{{ url_for('agregar_genero') }}">
+               
                 <div class="mb-3">
                     <label for="nombre" class="form-label">Nombre del Género</label>
                     <input type="text" class="form-control" id="nombre" name="nombre" required>
                 </div>
                 
+                <!-- Contenedor para botones (alineados a la derecha) -->
                 <div class="d-flex justify-content-end">
+                   
                     <a href="{{ url_for('listar_generos') }}" class="btn btn-secondary me-2">Cancelar</a>
+                    
                     <button type="submit" class="btn btn-primary">Guardar</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
-{% endblock %}
+{% endblock %}  
