@@ -1,0 +1,22 @@
+### Crear un género
+POST http://localhost:3000/generos
+Content-Type: application/json
+
+{
+    "nombre": "Acción"
+}
+
+### Listar géneros
+GET http://localhost:3000/genero/
+
+### Crear una película
+POST http://localhost:3000/pelicula
+Content-Type: application/json
+
+{
+    "titulo": "Matrix",
+    "genero": "Acción"
+}
+
+### Listar películas
+GET http://localhost:3000/pelicula
